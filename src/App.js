@@ -1,10 +1,19 @@
-import React, { useState } from "react";
-import CardList from "./CardList";
-import SearchBox from "./SearchBox";
-import { robots } from "./robots";
+import React, { useEffect, useState } from "react";
+import CardList from "./components/CardList";
+import SearchBox from "./components/SearchBox";
+import Scroll from "./components/Scroll";
 
 export default function App() {
   const [searchInput, setSearchInput] = useState("");
+  const [robots, setRobots] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((users) => {
+        setRobots(users);
+      });
+  }, []);
 
   const filteredRobots = robots.filter((robot) => {
     return robot.name.toLowerCase().includes(searchInput.toLowerCase());
@@ -14,13 +23,29 @@ export default function App() {
     setSearchInput(value);
   };
 
+  if (!robots.length) {
+    return (
+      <h1
+        className='tc f1'
+        style={{ fontFamily: "Impact, Charcoal, cursive, sans-serif" }}
+      >
+        Loading...
+      </h1>
+    );
+  }
+
   return (
     <div className="tc">
-      <h1 className='f1' style={{ fontFamily: "Impact, Charcoal, cursive, sans-serif" }}>
+      <h1
+        className="f1"
+        style={{ fontFamily: "Impact, Charcoal, cursive, sans-serif" }}
+      >
         ROBOFRIENDS
       </h1>
       <SearchBox onSearchChange={handleSearchChange} />
-      <CardList robots={filteredRobots} />
+      <Scroll>
+        <CardList robots={filteredRobots} />
+      </Scroll>
     </div>
   );
 }
