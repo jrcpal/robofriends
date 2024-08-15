@@ -23,18 +23,14 @@ export default function App() {
     setSearchInput(value);
   };
 
-  if (!robots.length) {
-    return (
-      <h1
-        className='tc f1'
-        style={{ fontFamily: "Impact, Charcoal, cursive, sans-serif" }}
-      >
-        Loading...
-      </h1>
-    );
-  }
-
-  return (
+  return !robots.length ? (
+    <h1
+      className="tc f1"
+      style={{ fontFamily: "Impact, Charcoal, cursive, sans-serif" }}
+    >
+      Loading...
+    </h1>
+  ) : (
     <div className="tc">
       <h1
         className="f1"
