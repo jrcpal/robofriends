@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import CardList from "./components/CardList";
-import SearchBox from "./components/SearchBox";
-import Scroll from "./components/Scroll";
+import CardList from "../components/CardList";
+import SearchBox from "../components/SearchBox";
+import Scroll from "../components/Scroll";
 
 export default function App() {
   const [searchInput, setSearchInput] = useState("");
