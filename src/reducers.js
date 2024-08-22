@@ -7,6 +7,7 @@ const initialState = {
 }
 
 export const searchRobots = (state=initialState, action={}) => { 
+    //console.log('searchRobots', action.type);
     switch (action.type) {
         case CHANGE_SEARCH_FIELD:
             // Object.assign() is used to copy the state object and return a new object with the updated searchField property.
