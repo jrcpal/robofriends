@@ -10,11 +10,15 @@ import store from "./store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // Strict mode calls lifecycle methods, like useEffect, twice
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  //   <Provider store={store}>
+  //     <App />
+  //   </Provider>
+  // </React.StrictMode>
+
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
 
 reportWebVitals();
