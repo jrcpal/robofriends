@@ -6,6 +6,7 @@ import "tachyons";
 import reportWebVitals from "./reportWebVitals";
 import App from "./containers/App";
 import store from "./store";
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,3 +23,4 @@ root.render(
 );
 
 reportWebVitals();
+serviceWorkerRegistration.register();
